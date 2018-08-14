@@ -2,10 +2,10 @@ from move import Move
 
 
 class Board:
-  dimension = 3
+  DIMENSION = 3
 
   def __init__(self):
-    self.rows = [[None for i in range(self.dimension)] for j in range(self.dimension)]
+    self.rows = [[None for i in range(self.DIMENSION)] for j in range(self.DIMENSION)]
 
   def play_move(self, move: Move) -> bool:
     if self.rows[move.row][move.column] is not None:
@@ -16,8 +16,9 @@ class Board:
     return True
 
   def get_lines(self) -> list:
-    return (self.rows
-      + [[self.rows[row][column] for row in range(self.dimension)] for column in range(self.dimension)]
-      + [[self.rows[i][i] for i in range(self.dimension)]]
-      + [[self.rows[i][self.dimension - i - 1] for i in range(self.dimension)]]
+    # FIXME sacrificing too much readability?
+    return (self.rows # rows
+      + [[self.rows[row][column] for row in range(self.DIMENSION)] for column in range(self.DIMENSION)] # columns
+      + [[self.rows[i][i] for i in range(self.DIMENSION)]] # top-left to bottom-right diagonal
+      + [[self.rows[i][self.DIMENSION - i - 1] for i in range(self.DIMENSION)]] # top-right to bottom-left diagonal
       )

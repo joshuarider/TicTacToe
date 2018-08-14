@@ -8,8 +8,8 @@ class Player:
     self.symbol = symbol
 
   def get_move(self, board: Board) -> Move:
-    row_input = self.get_move_input('{}: which row? '.format(self.name), board.dimension - 1)
-    column_input = self.get_move_input('{}: which column? '.format(self.name), board.dimension - 1)
+    row_input = self.get_move_input('{}: which row? '.format(self.name), board.DIMENSION - 1)
+    column_input = self.get_move_input('{}: which column? '.format(self.name), board.DIMENSION - 1)
 
     return Move(row_input, column_input, self.symbol)
 

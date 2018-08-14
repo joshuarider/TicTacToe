@@ -10,7 +10,7 @@ class Adjudicator:
         self.update_winning_state(game_state, player)
         return
 
-    if game_state.move_count == board.dimension ** 2:
+    if game_state.move_count == board.DIMENSION ** 2:
         self.update_drawn_state(game_state)
 
   def update_winning_state(self, game_state: GameState, player: Player) -> None:
