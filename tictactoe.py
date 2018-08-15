@@ -1,5 +1,4 @@
 import random
-from collections import deque
 
 from board import Board
 from player import Player
@@ -27,7 +26,7 @@ class TicTacToe:
     while not game_state.game_over:
       self.view_screen.print_board(board)
 
-      active_player = player_list[game_state.move_count % 2]
+      active_player = player_list[game_state.move_count % len(player_list)]
 
       move = active_player.get_move(board)
 
