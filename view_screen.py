@@ -9,7 +9,7 @@ class ViewScreen:
     os.system('clear')
 
     for row in board.rows:
-      print(''.join(map(lambda x: x if x else ' ', row)))
+      print(' '.join([x if x else ' ' for x in row]))
 
   def announce_outcome(self, game_state: GameState) -> None:
     if not game_state.winner:

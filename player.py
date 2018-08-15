@@ -8,17 +8,17 @@ class Player:
     self.symbol = symbol
 
   def get_move(self, board: Board) -> Move:
-    row_input = self.get_move_input('{}: which row? '.format(self.name), board.DIMENSION - 1)
-    column_input = self.get_move_input('{}: which column? '.format(self.name), board.DIMENSION - 1)
+    row_input = self.get_move_input('{}: which row? '.format(self.name), board.DIMENSION)
+    column_input = self.get_move_input('{}: which column? '.format(self.name), board.DIMENSION)
 
-    return Move(row_input, column_input, self.symbol)
+    return Move(row_input - 1, column_input - 1, self.symbol)
 
   def get_move_input(self, prompt: str, maximum_input: int) -> None:
     try:
       move_input_raw = input(prompt)
       move_input_int = int(move_input_raw)
 
-      if 0 <= move_input_int <= maximum_input:
+      if 1 <= move_input_int <= maximum_input:
         return move_input_int
 
       return self.get_move_input(prompt, maximum_input)
