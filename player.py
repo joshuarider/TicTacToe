@@ -3,24 +3,15 @@ from board import Board
 
 
 class Player:
-  def __init__(self, name, symbol):
+  def __init__(self, name, symbol, play_strategy):
     self.name = name
     self.symbol = symbol
+    self.play_strategy = play_strategy
 
   def get_move(self, board: Board) -> Move:
-    row_input = self.get_move_input('{}: which row? '.format(self.name), board.DIMENSION)
-    column_input = self.get_move_input('{}: which column? '.format(self.name), board.DIMENSION)
+    print("{}'s turn.".format(self.name))
 
-    return Move(row_input - 1, column_input - 1, self.symbol)
+    move = self.play_strategy.get_move(board)
+    move.value = self.symbol
 
-  def get_move_input(self, prompt: str, maximum_input: int) -> None:
-    try:
-      move_input_raw = input(prompt)
-      move_input_int = int(move_input_raw)
-
-      if 1 <= move_input_int <= maximum_input:
-        return move_input_int
-
-      return self.get_move_input(prompt, maximum_input)
-    except ValueError as e:
-      return self.get_move_input(prompt, maximum_input)
+    return move

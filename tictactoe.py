@@ -5,6 +5,8 @@ from player import Player
 from adjudicator import Adjudicator
 from view_screen import ViewScreen
 from game_state import GameState
+from human_strategy import HumanStrategy
+from random_strategy import RandomStrategy
 
 
 class TicTacToe:
@@ -14,9 +16,9 @@ class TicTacToe:
 
   def start(self) -> None:
     player_list = [
-      Player('Player 1', 'X'),
-      Player('Player 2', 'O')
-      ]
+      Player('Player 1', 'X', HumanStrategy()),
+      Player('Player 2', 'O', RandomStrategy())
+    ]
 
     random.shuffle(player_list)
 
