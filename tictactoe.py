@@ -30,6 +30,8 @@ class TicTacToe:
 
       active_player = player_list[game_state.move_count % len(player_list)]
 
+      print("{}'s turn.".format(active_player.name))
+
       move = active_player.get_move(board)
 
       if board.play_move(move):
